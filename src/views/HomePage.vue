@@ -7,10 +7,10 @@
           <span>Snail Tools</span>
         </div>
         <div class="portal-nav-actions">
-          <el-button round @click="openTool('/json')">
+          <el-button round @click="openTool('/JsonToolPage')">
             JSON 处理
           </el-button>
-          <el-button class="home-nav-action" type="primary" round @click="openTool('/workbench')">
+          <el-button class="home-nav-action" type="primary" round @click="openTool('/ResumeWorkbench')">
             简历工作台
           </el-button>
         </div>
@@ -24,11 +24,11 @@
             把常用的小工具集中在一个安静、直接的页面里。简历制作、JSON 处理、时间转换和后续功能都从这里进入。
           </p>
           <div class="portal-actions">
-            <el-button class="home-primary-button" type="primary" size="large" @click="openTool('/workbench')">
+            <el-button class="home-primary-button" type="primary" size="large" @click="openTool('/ResumeWorkbench')">
               <FileText :size="18" />
               制作简历
             </el-button>
-            <el-button class="home-secondary-button" size="large" @click="openTool('/json')">
+            <el-button class="home-secondary-button" size="large" @click="openTool('/JsonToolPage')">
               <Braces :size="18" />
               格式化 JSON
             </el-button>
@@ -88,12 +88,12 @@
           :class="[{ available: tool.enabled, planned: !tool.enabled }, `tone-${tool.tone}`]"
         >
           <div class="portal-feature-top">
-            <span>
+            <span class="portal-feature-icon">
               <component :is="tool.icon" :size="22" />
             </span>
-            <el-tag class="portal-status-tag" :type="tool.enabled ? 'success' : 'info'" effect="plain">
-              {{ tool.enabled ? '可用' : '规划中' }}
-            </el-tag>
+            <span class="portal-status-badge" :class="{ ready: tool.enabled, pending: !tool.enabled }">
+              {{ tool.enabled ? '已上线' : '规划中' }}
+            </span>
           </div>
           <h3>{{ tool.title }}</h3>
           <p>{{ tool.description }}</p>
@@ -153,7 +153,7 @@ const allTools = [
     title: '简历工作台',
     kicker: 'Resume',
     description: '编辑多份简历，实时预览，并导出 PDF 或 Word。',
-    path: '/workbench',
+    path: '/ResumeWorkbench',
     icon: markRaw(FileText),
     tone: 'resume',
     enabled: true
@@ -162,7 +162,7 @@ const allTools = [
     title: 'JSON 处理',
     kicker: 'JSON',
     description: '格式化、压缩 JSON，并在解析失败时给出明确错误。',
-    path: '/json',
+    path: '/JsonToolPage',
     icon: markRaw(Braces),
     tone: 'json',
     enabled: true
@@ -171,7 +171,7 @@ const allTools = [
     title: '时间转换',
     kicker: 'Time',
     description: '时间戳与本地时间互转，支持秒级和毫秒级输入。',
-    path: '/time',
+    path: '/TimeToolPage',
     icon: markRaw(CalendarClock),
     tone: 'time',
     enabled: true
@@ -180,7 +180,7 @@ const allTools = [
     title: '下班倒计时',
     kicker: 'Offwork',
     description: '实时显示距离下班还有多久，支持自定义上下班时间和今日进度。',
-    path: '/offwork',
+    path: '/OffworkCountdownPage',
     icon: markRaw(TimerReset),
     tone: 'offwork',
     enabled: true
@@ -189,7 +189,7 @@ const allTools = [
     title: '颜色取值',
     kicker: 'Color',
     description: '收集常用色值、复制 HEX，并记录项目调色板。',
-    path: '/color',
+    path: '/ColorToolPage',
     icon: markRaw(Palette),
     tone: 'color',
     enabled: true
@@ -198,7 +198,7 @@ const allTools = [
     title: '二维码工具',
     kicker: 'QR',
     description: '把链接或文本快速生成二维码图片。',
-    path: '/qrcode',
+    path: '/QrCodeToolPage',
     icon: markRaw(QrCode),
     tone: 'qrcode',
     enabled: true
@@ -207,7 +207,7 @@ const allTools = [
     title: '前端处理工具箱',
     kicker: 'Process',
     description: '处理图片、Base64、URL、文本、CSV、Markdown 和浏览器 UA。',
-    path: '/frontend-tools',
+    path: '/FrontendProcessToolPage',
     icon: markRaw(Wrench),
     tone: 'frontend',
     enabled: true

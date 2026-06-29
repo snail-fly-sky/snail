@@ -13,42 +13,42 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'HomePage',
       component: HomePage
     },
     {
-      path: '/workbench',
-      name: 'workbench',
+      path: '/ResumeWorkbench',
+      name: 'ResumeWorkbench',
       component: ResumeWorkbench
     },
     {
-      path: '/json',
-      name: 'json',
+      path: '/JsonToolPage',
+      name: 'JsonToolPage',
       component: JsonToolPage
     },
     {
-      path: '/time',
-      name: 'time',
+      path: '/TimeToolPage',
+      name: 'TimeToolPage',
       component: TimeToolPage
     },
     {
-      path: '/offwork',
-      name: 'offwork',
+      path: '/OffworkCountdownPage',
+      name: 'OffworkCountdownPage',
       component: OffworkCountdownPage
     },
     {
-      path: '/color',
-      name: 'color',
+      path: '/ColorToolPage',
+      name: 'ColorToolPage',
       component: ColorToolPage
     },
     {
-      path: '/qrcode',
-      name: 'qrcode',
+      path: '/QrCodeToolPage',
+      name: 'QrCodeToolPage',
       component: QrCodeToolPage
     },
     {
-      path: '/frontend-tools',
-      name: 'frontend-tools',
+      path: '/FrontendProcessToolPage',
+      name: 'FrontendProcessToolPage',
       component: FrontendProcessToolPage
     },
     {

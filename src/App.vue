@@ -10,13 +10,13 @@
     <div class="app-topbar-actions">
       <nav class="app-topbar-menu" aria-label="顶部菜单">
         <RouterLink to="/">首页</RouterLink>
-        <RouterLink to="/workbench">简历</RouterLink>
-        <RouterLink to="/json">JSON</RouterLink>
-        <RouterLink to="/time">时间</RouterLink>
-        <RouterLink to="/color">颜色</RouterLink>
-        <RouterLink to="/qrcode">二维码</RouterLink>
-        <RouterLink to="/frontend-tools">前端工具</RouterLink>
-        <RouterLink to="/offwork">下班倒计时</RouterLink>
+        <RouterLink to="/ResumeWorkbench">简历</RouterLink>
+        <RouterLink to="/JsonToolPage">JSON</RouterLink>
+        <RouterLink to="/TimeToolPage">时间</RouterLink>
+        <RouterLink to="/ColorToolPage">颜色</RouterLink>
+        <RouterLink to="/QrCodeToolPage">二维码</RouterLink>
+        <RouterLink to="/FrontendProcessToolPage">前端工具</RouterLink>
+        <RouterLink to="/OffworkCountdownPage">下班倒计时</RouterLink>
       </nav>
       <button class="theme-toggle" type="button" :aria-label="themeLabel" @click="toggleTheme">
         <component :is="themeIcon" :size="18" />

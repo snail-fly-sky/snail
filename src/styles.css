@@ -185,6 +185,8 @@ button {
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
+  padding: 3px 0;
+  margin: -3px 0;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -218,8 +220,9 @@ button {
   border-color: rgba(37, 87, 246, 0.16);
   background: rgba(37, 87, 246, 0.08);
   color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(37, 87, 246, 0.16);
   outline: none;
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .app-topbar-menu a.router-link-active,
@@ -279,6 +282,7 @@ button {
   border-color: rgba(116, 167, 255, 0.22);
   background: rgba(116, 167, 255, 0.1);
   color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(116, 167, 255, 0.22);
 }
 
 :root[data-theme="dark"] .app-topbar-menu a.router-link-active,
@@ -2601,7 +2605,7 @@ textarea:focus {
 }
 
 .portal-tool-icon,
-.portal-feature-top > span {
+.portal-feature-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2673,7 +2677,7 @@ textarea:focus {
 .portal-tool-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
 }
 
 .portal-feature-card {
@@ -2683,11 +2687,11 @@ textarea:focus {
   --tool-accent-border: rgba(37, 87, 246, 0.28);
   --tool-shadow: rgba(37, 87, 246, 0.12);
   position: relative;
-  min-height: 226px;
+  min-height: 188px;
   display: grid;
   align-content: start;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 14px;
   border: 1px solid rgba(21, 25, 31, 0.1);
   border-radius: 8px;
   background: #ffffff;
@@ -2790,17 +2794,17 @@ textarea:focus {
   background: linear-gradient(90deg, var(--tool-accent), var(--tool-accent-strong));
 }
 
-.portal-feature-card.available .portal-feature-top > span {
+.portal-feature-card.available .portal-feature-icon {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.2), var(--tool-accent)),
     var(--tool-accent-strong);
   box-shadow: 0 14px 30px var(--tool-shadow);
 }
 
-.portal-feature-card.available .portal-status-tag {
-  --el-tag-bg-color: var(--tool-accent-soft);
-  --el-tag-border-color: var(--tool-accent-border);
-  --el-tag-text-color: var(--tool-accent);
+.portal-feature-card.available .portal-status-badge {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.22);
 }
 
 .portal-feature-card.available .portal-card-action {
@@ -2834,7 +2838,7 @@ textarea:focus {
   background: linear-gradient(90deg, var(--tool-accent), rgba(21, 25, 31, 0.16));
 }
 
-.portal-feature-card.planned .portal-feature-top > span {
+.portal-feature-card.planned .portal-feature-icon {
   background: var(--tool-accent);
   color: #ffffff;
 }
@@ -2844,10 +2848,12 @@ textarea:focus {
   color: #6b7280;
 }
 
-.portal-feature-card.planned .portal-status-tag {
-  --el-tag-bg-color: var(--tool-accent-soft);
-  --el-tag-border-color: var(--tool-accent-border);
-  --el-tag-text-color: var(--tool-accent);
+.portal-feature-card.planned .portal-status-badge {
+  border: 1px solid var(--tool-accent-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), var(--tool-accent-soft)),
+    #ffffff;
+  color: var(--tool-accent);
 }
 
 .portal-feature-card.planned:hover,
@@ -2859,28 +2865,50 @@ textarea:focus {
 .portal-feature-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
+  padding-right: 64px;
 }
 
-.portal-feature-top > span {
+.portal-feature-icon {
   width: 42px;
   height: 42px;
+}
+
+.portal-status-badge {
+  position: absolute;
+  top: 15px;
+  right: -34px;
+  z-index: 2;
+  width: 124px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1;
+  text-shadow: 0 1px 1px rgba(21, 25, 31, 0.18);
+  transform: rotate(45deg) translateZ(0);
+  transform-origin: center;
 }
 
 .portal-feature-card h3 {
   margin: 0;
   color: var(--ink);
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.2;
   font-weight: 950;
 }
 
 .portal-feature-card p {
   margin: 0;
-  min-height: 66px;
+  min-height: 48px;
   color: #526071;
-  line-height: 1.62;
+  line-height: 1.56;
 }
 
 .portal-card-action {
@@ -3452,10 +3480,23 @@ textarea:focus {
     #111827;
 }
 
+:root[data-theme="dark"] .portal-feature-card.available .portal-status-badge {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(34, 197, 94, 0.22);
+}
+
 :root[data-theme="dark"] .portal-feature-card.planned {
   background:
     linear-gradient(135deg, var(--tool-accent-soft), rgba(15, 23, 42, 0.82)),
     #111827;
+}
+
+:root[data-theme="dark"] .portal-feature-card.planned .portal-status-badge {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.94), var(--tool-accent-soft)),
+    #111827;
+  color: #c8d3e5;
 }
 
 :root[data-theme="dark"] .portal-feature-card h3,
@@ -3532,7 +3573,7 @@ textarea:focus {
 }
 
 :root[data-theme="dark"] .home-brand-mark,
-:root[data-theme="dark"] .portal-feature-top > span,
+:root[data-theme="dark"] .portal-feature-icon,
 :root[data-theme="dark"] .portal-tool-icon {
   color: #ffffff;
 }
@@ -3994,4 +4035,329 @@ textarea:focus {
 
 :root[data-theme="dark"] .el-color-picker__color {
   border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Apple-style glass polish */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.58);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --glass-shadow: 0 22px 70px rgba(31, 41, 55, 0.12);
+  --glass-blur: blur(26px) saturate(1.45);
+  --input-border: rgba(21, 25, 31, 0.18);
+  --input-border-focus: rgba(37, 87, 246, 0.42);
+}
+
+:root[data-theme="dark"] {
+  --glass-bg: rgba(15, 23, 42, 0.58);
+  --glass-bg-strong: rgba(15, 23, 42, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 24px 76px rgba(0, 0, 0, 0.34);
+  --input-border: rgba(255, 255, 255, 0.18);
+  --input-border-focus: rgba(116, 167, 255, 0.46);
+}
+
+body {
+  background:
+    radial-gradient(circle at 14% 8%, rgba(204, 251, 241, 0.55), transparent 28%),
+    radial-gradient(circle at 78% 10%, rgba(219, 234, 254, 0.66), transparent 30%),
+    radial-gradient(circle at 88% 86%, rgba(220, 252, 231, 0.58), transparent 34%),
+    linear-gradient(135deg, #f8fbff 0%, #eef5ff 46%, #f7fbf3 100%);
+}
+
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(34, 197, 94, 0.18), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(96, 165, 250, 0.18), transparent 32%),
+    radial-gradient(circle at 84% 84%, rgba(20, 184, 166, 0.13), transparent 34%),
+    linear-gradient(135deg, #08111f 0%, #0c1728 48%, #111827 100%);
+}
+
+.app-topbar,
+.home-hero,
+.portal-hero,
+.portal-section,
+.portal-strip,
+.tool-header,
+.tool-panel,
+.resume-sidebar,
+.workspace-toolbar,
+.editor-panel,
+.preview-panel,
+.editor-section,
+.entry-editor,
+.frontend-tool-card,
+.frontend-kv-list,
+.frontend-diff-row,
+.frontend-path-list button,
+.frontend-markdown-preview,
+.offwork-note-panel,
+.offwork-timeline div,
+.offwork-settings label,
+.color-picker-field,
+.color-value-item,
+.color-palette-card,
+.qrcode-preview-box {
+  border-color: var(--glass-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08)),
+    var(--glass-bg);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.portal-feature-card,
+.portal-overview-card,
+.home-feature-band article,
+.home-live-card,
+.home-metric-grid span,
+.home-signal-strip span,
+.portal-signal-strip span,
+.portal-overview-stack span,
+.home-preview-rail span,
+.resume-list-item,
+.icon-button,
+.small-action,
+.ghost-action,
+.el-button {
+  border-color: var(--glass-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.08)),
+    var(--glass-bg-strong);
+  box-shadow: 0 14px 38px rgba(31, 41, 55, 0.1), var(--glass-inner);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.portal-feature-card.available,
+.portal-feature-card.planned {
+  background:
+    linear-gradient(135deg, var(--tool-accent-soft), rgba(255, 255, 255, 0.46)),
+    var(--glass-bg-strong);
+}
+
+.portal-feature-card:hover,
+.portal-feature-card:focus-within,
+.el-button:not(.is-disabled):hover,
+.el-button:not(.is-disabled):focus-visible,
+.ghost-action:hover,
+.ghost-action:focus-visible,
+.icon-button:hover,
+.small-action:hover {
+  box-shadow: 0 22px 54px rgba(31, 41, 55, 0.14), var(--glass-inner);
+}
+
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select .el-input__wrapper,
+.el-select__wrapper {
+  border-color: var(--input-border);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    inset 0 0 0 1px var(--input-border),
+    var(--glass-inner);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+
+.el-input__wrapper.is-focus,
+.el-textarea__inner:focus,
+.el-select .el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused {
+  border-color: var(--input-border-focus);
+  box-shadow:
+    inset 0 0 0 1px var(--input-border-focus),
+    var(--glass-inner);
+}
+
+:root[data-theme="dark"] .app-topbar,
+:root[data-theme="dark"] .home-hero,
+:root[data-theme="dark"] .portal-hero,
+:root[data-theme="dark"] .portal-section,
+:root[data-theme="dark"] .portal-strip,
+:root[data-theme="dark"] .tool-header,
+:root[data-theme="dark"] .tool-panel,
+:root[data-theme="dark"] .resume-sidebar,
+:root[data-theme="dark"] .workspace-toolbar,
+:root[data-theme="dark"] .editor-panel,
+:root[data-theme="dark"] .preview-panel,
+:root[data-theme="dark"] .editor-section,
+:root[data-theme="dark"] .entry-editor,
+:root[data-theme="dark"] .frontend-tool-card,
+:root[data-theme="dark"] .frontend-kv-list,
+:root[data-theme="dark"] .frontend-diff-row,
+:root[data-theme="dark"] .frontend-path-list button,
+:root[data-theme="dark"] .frontend-markdown-preview,
+:root[data-theme="dark"] .offwork-note-panel,
+:root[data-theme="dark"] .offwork-timeline div,
+:root[data-theme="dark"] .offwork-settings label,
+:root[data-theme="dark"] .color-picker-field,
+:root[data-theme="dark"] .color-value-item,
+:root[data-theme="dark"] .color-palette-card,
+:root[data-theme="dark"] .qrcode-preview-box,
+:root[data-theme="dark"] .portal-feature-card,
+:root[data-theme="dark"] .portal-overview-card,
+:root[data-theme="dark"] .home-feature-band article,
+:root[data-theme="dark"] .home-live-card,
+:root[data-theme="dark"] .home-metric-grid span,
+:root[data-theme="dark"] .home-signal-strip span,
+:root[data-theme="dark"] .portal-signal-strip span,
+:root[data-theme="dark"] .portal-overview-stack span,
+:root[data-theme="dark"] .home-preview-rail span,
+:root[data-theme="dark"] .resume-list-item,
+:root[data-theme="dark"] .icon-button,
+:root[data-theme="dark"] .small-action,
+:root[data-theme="dark"] .ghost-action {
+  border-color: var(--glass-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    var(--glass-bg);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+}
+
+:root[data-theme="dark"] .portal-feature-card.available,
+:root[data-theme="dark"] .portal-feature-card.planned {
+  background:
+    linear-gradient(135deg, var(--tool-accent-soft), rgba(15, 23, 42, 0.52)),
+    var(--glass-bg-strong);
+}
+
+:root[data-theme="dark"] .el-input__wrapper,
+:root[data-theme="dark"] .el-textarea__inner,
+:root[data-theme="dark"] .el-select .el-input__wrapper,
+:root[data-theme="dark"] .el-select__wrapper {
+  border-color: var(--input-border);
+  background: rgba(15, 23, 42, 0.62);
+  box-shadow:
+    inset 0 0 0 1px var(--input-border),
+    var(--glass-inner);
+}
+
+:root[data-theme="dark"] .el-input__wrapper.is-focus,
+:root[data-theme="dark"] .el-textarea__inner:focus,
+:root[data-theme="dark"] .el-select .el-input__wrapper.is-focus,
+:root[data-theme="dark"] .el-select__wrapper.is-focused {
+  border-color: var(--input-border-focus);
+  box-shadow:
+    inset 0 0 0 1px var(--input-border-focus),
+    var(--glass-inner);
+}
+
+:root:not([data-theme="dark"]) body,
+:root:not([data-theme="dark"]) .app-topbar,
+:root:not([data-theme="dark"]) .home-page,
+:root:not([data-theme="dark"]) .tool-page,
+:root:not([data-theme="dark"]) .app-shell,
+:root:not([data-theme="dark"]) .portal-feature-card,
+:root:not([data-theme="dark"]) .tool-panel,
+:root:not([data-theme="dark"]) .editor-panel,
+:root:not([data-theme="dark"]) .resume-sidebar {
+  color: #15191f;
+}
+
+:root:not([data-theme="dark"]) h1,
+:root:not([data-theme="dark"]) h2,
+:root:not([data-theme="dark"]) h3,
+:root:not([data-theme="dark"]) h4,
+:root:not([data-theme="dark"]) strong,
+:root:not([data-theme="dark"]) .portal-feature-card h3,
+:root:not([data-theme="dark"]) .portal-tool-content strong,
+:root:not([data-theme="dark"]) .workspace-toolbar h2,
+:root:not([data-theme="dark"]) .editor-section h3 {
+  color: #111827;
+}
+
+:root:not([data-theme="dark"]) p,
+:root:not([data-theme="dark"]) small,
+:root:not([data-theme="dark"]) label,
+:root:not([data-theme="dark"]) .portal-feature-card p,
+:root:not([data-theme="dark"]) .portal-copy p,
+:root:not([data-theme="dark"]) .home-copy p,
+:root:not([data-theme="dark"]) .tool-result span,
+:root:not([data-theme="dark"]) .frontend-muted,
+:root:not([data-theme="dark"]) .editor-section label {
+  color: #526071;
+}
+
+:root:not([data-theme="dark"]) .el-button:not(.el-button--primary),
+:root:not([data-theme="dark"]) .theme-toggle,
+:root:not([data-theme="dark"]) .ghost-action,
+:root:not([data-theme="dark"]) .icon-button,
+:root:not([data-theme="dark"]) .small-action {
+  color: #15191f;
+}
+
+:root:not([data-theme="dark"]) .el-button--primary:not(.is-plain) {
+  background: #2557f6;
+  border-color: #2557f6;
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(37, 87, 246, 0.22);
+}
+
+:root:not([data-theme="dark"]) .el-button--primary.is-plain {
+  background: rgba(37, 87, 246, 0.08);
+  border-color: rgba(37, 87, 246, 0.24);
+  color: #2557f6;
+}
+
+:root:not([data-theme="dark"]) .portal-feature-card.available .portal-card-action {
+  background: var(--tool-accent-soft);
+  border-color: var(--tool-accent-border);
+  color: var(--tool-accent);
+}
+
+:root:not([data-theme="dark"]) .portal-overview-card {
+  color: #15191f;
+}
+
+:root:not([data-theme="dark"]) .portal-overview-card::after {
+  color: rgba(21, 25, 31, 0.06);
+}
+
+:root:not([data-theme="dark"]) .portal-overview-head small,
+:root:not([data-theme="dark"]) .portal-overview-card p,
+:root:not([data-theme="dark"]) .portal-overview-metrics small {
+  color: #526071;
+}
+
+:root:not([data-theme="dark"]) .portal-overview-head strong,
+:root:not([data-theme="dark"]) .portal-overview-metrics b {
+  color: #111827;
+}
+
+:root:not([data-theme="dark"]) .portal-overview-metrics span,
+:root:not([data-theme="dark"]) .portal-overview-stack span {
+  border-color: rgba(21, 25, 31, 0.1);
+  background: rgba(255, 255, 255, 0.62);
+  color: #526071;
+}
+
+:root:not([data-theme="dark"]) .portal-strip strong,
+:root[data-theme="dark"] .portal-strip strong {
+  color: #f8fbff;
+}
+
+.portal-feature-card.available:hover,
+.portal-feature-card.available:focus-within,
+.portal-feature-card.planned:hover,
+.portal-feature-card.planned:focus-within {
+  border-color: rgba(100, 116, 139, 0.24);
+  background:
+    linear-gradient(135deg, rgba(148, 163, 184, 0.18), rgba(255, 255, 255, 0.72)),
+    rgba(255, 255, 255, 0.92);
+  box-shadow: 0 28px 70px rgba(100, 116, 139, 0.2), var(--glass-inner);
+}
+
+:root[data-theme="dark"] .portal-feature-card.available:hover,
+:root[data-theme="dark"] .portal-feature-card.available:focus-within,
+:root[data-theme="dark"] .portal-feature-card.planned:hover,
+:root[data-theme="dark"] .portal-feature-card.planned:focus-within {
+  border-color: rgba(148, 163, 184, 0.24);
+  background:
+    linear-gradient(135deg, rgba(148, 163, 184, 0.14), rgba(15, 23, 42, 0.62)),
+    rgba(15, 23, 42, 0.86);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32), var(--glass-inner);
 }

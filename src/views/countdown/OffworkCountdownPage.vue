@@ -475,6 +475,56 @@ onUnmounted(() => {
   font-weight: 950;
 }
 
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-hero) {
+  border-color: rgba(21, 25, 31, 0.08);
+  background:
+    radial-gradient(circle at 16% 20%, rgba(255, 104, 79, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 18%, rgba(37, 87, 246, 0.14), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 245, 255, 0.9)),
+    #ffffff;
+  color: #111827;
+  box-shadow: 0 24px 70px rgba(44, 55, 67, 0.12);
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-hero::after) {
+  color: rgba(37, 87, 246, 0.08);
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-orbit) {
+  background:
+    conic-gradient(var(--coral) 0 var(--progress), rgba(21, 25, 31, 0.1) var(--progress) 100%),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: inset 0 0 0 1px rgba(21, 25, 31, 0.08), 0 28px 70px rgba(37, 87, 246, 0.14);
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-orbit::before) {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(226, 236, 255, 0.92)),
+    #ffffff;
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-copy h2),
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-orbit-core strong),
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-metrics strong) {
+  color: #111827;
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-copy p) {
+  color: #526071;
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-orbit-core span),
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-orbit-core small),
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-metrics small) {
+  color: #526071;
+}
+
+:global(:root:not([data-theme="dark"]) .offwork-page .offwork-metrics span) {
+  border-color: rgba(21, 25, 31, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 34px rgba(44, 55, 67, 0.08);
+}
+
 .offwork-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(280px, 0.8fr);
