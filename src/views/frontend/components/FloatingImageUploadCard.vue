@@ -219,26 +219,31 @@ onBeforeUnmount(() => {
   right: 24px;
   bottom: 24px;
   z-index: 30;
-  width: 320px;
+  width: 348px;
   display: grid;
   gap: 10px;
   padding: 12px;
-  border: 1px solid rgba(21, 25, 31, 0.12);
+  border: 1px solid rgba(21, 25, 31, 0.1);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.72);
   color: var(--ink);
-  box-shadow: 0 18px 48px rgba(44, 55, 67, 0.18);
-  backdrop-filter: blur(14px);
+  box-shadow:
+    0 18px 48px rgba(44, 55, 67, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(16px) saturate(1.18);
+  -webkit-backdrop-filter: blur(16px) saturate(1.18);
 }
 
 .frontend-floating-upload.is-collapsed {
-  width: 300px;
+  width: 320px;
   gap: 0;
 }
 
 .frontend-floating-upload-head {
   display: grid;
-  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr) 28px 28px;
+  grid-template-columns: 72px minmax(0, 1fr) 28px 28px;
   gap: 8px;
   align-items: center;
   cursor: grab;
@@ -318,14 +323,14 @@ onBeforeUnmount(() => {
 
 .frontend-floating-upload-body {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-columns: 104px minmax(0, 1fr);
   gap: 10px;
   min-width: 0;
 }
 
 .frontend-floating-upload-preview {
   min-width: 0;
-  height: 96px;
+  height: 104px;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -378,7 +383,7 @@ onBeforeUnmount(() => {
   display: grid;
   align-content: start;
   gap: 6px;
-  max-height: 96px;
+  max-height: 104px;
   overflow: auto;
 }
 
@@ -413,9 +418,11 @@ onBeforeUnmount(() => {
   --muted: #b7c3d7;
   border-color: rgba(255, 255, 255, 0.14);
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.82)),
-    #111827;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(15, 23, 42, 0.72);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 :global(:root[data-theme="dark"] .frontend-floating-upload .frontend-floating-file-field) {
