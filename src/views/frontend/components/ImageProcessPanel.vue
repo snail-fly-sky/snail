@@ -1,5 +1,5 @@
 ﻿<template>
-  <FloatingImageUploadCard v-model="publicImageModel" />
+  <FloatingImageUploadCard v-if="props.isActive" v-model="publicImageModel" />
           <div class="frontend-tool-grid frontend-image-grid">
             <section class="frontend-tool-card frontend-tool-card-main">
               <div class="tool-panel-head">
@@ -120,6 +120,11 @@
                             <span>{{ item.label }}</span>
                             <strong>{{ item.value }}</strong>
                           </div>
+                          <ul class="frontend-note-list frontend-overview-note-list">
+                            <li>JPG 适合照片压缩；透明区域导出后会丢失透明信息。</li>
+                            <li>PNG 是无损格式，质量滑块通常不会明显改变体积。</li>
+                            <li>WebP 体积通常更小，但旧环境兼容性弱于 JPG。</li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -186,6 +191,10 @@
                     description="未提取颜色"
                     :image-size="48"
                   />
+                  <ul class="frontend-note-list frontend-panel-note-list">
+                    <li>颜色会从缩略采样中统计，适合快速获取主色。</li>
+                    <li>透明度较低的像素不会参与主色统计。</li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -265,6 +274,10 @@
                           <span>{{ item.label }}</span>
                           <strong>{{ item.value }}</strong>
                         </div>
+                        <ul class="frontend-note-list frontend-overview-note-list">
+                          <li>压缩会按当前输出格式重新编码。</li>
+                          <li>缩小宽高通常比单独调低质量更明显减少体积。</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -341,6 +354,9 @@
                         <Download :size="16" />
                         下载
                       </a>
+                      <ul class="frontend-note-list frontend-preview-note-list frontend-preview-note-list-source">
+                        <li>Data URL 会包含格式头，文本长度通常大于文件体积。</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -391,6 +407,9 @@
                         <Download :size="16" />
                         下载
                       </a>
+                      <ul class="frontend-note-list frontend-preview-note-list">
+                        <li>未带 data:image 前缀时，会按 PNG Base64 预览。</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -473,6 +492,10 @@
                           <span>{{ item.label }}</span>
                           <strong>{{ item.value }}</strong>
                         </div>
+                        <ul class="frontend-note-list frontend-overview-note-list">
+                          <li>平铺水印会覆盖整图，导出前建议先检查预览。</li>
+                          <li>透明度越高越明显，也越容易遮挡原图内容。</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -589,7 +612,10 @@
                       </div>
                     </div>
                   </div>
-                  <p class="frontend-muted">清理会通过 Canvas 重新导出图片，常见 EXIF、拍摄设备、定位等元数据会被移除。</p>
+                  <ul class="frontend-note-list frontend-exif-bottom-note-list">
+                    <li>清理会重新导出图片，常见拍摄和定位元数据会被移除。</li>
+                    <li>当前仅解析 JPEG EXIF，其他格式只展示基础信息。</li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -619,6 +645,13 @@ import { ElMessage } from 'element-plus'
 import { Download } from 'lucide-vue-next'
 import FloatingImageUploadCard from './FloatingImageUploadCard.vue'
 
+const props = defineProps({
+  isActive: {
+    type: Boolean,
+    required: true
+  }
+})
+
 const imageFile = ref()
 const imageFileName = ref('')
 const imageDataUrl = ref('')
@@ -641,7 +674,7 @@ const convertedImageDataUrl = ref('')
 const watermarkImageDataUrl = ref('')
 const exifCleanImageDataUrl = ref('')
 const exifDialogVisible = ref(false)
-const imageFormat = ref('image/webp')
+const imageFormat = ref('image/jpeg')
 const imageQuality = ref(80)
 const resizeWidth = ref(320)
 const resizeHeight = ref(320)

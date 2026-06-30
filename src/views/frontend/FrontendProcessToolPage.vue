@@ -18,7 +18,7 @@
     <section class="tool-panel frontend-tool-shell">
       <el-tabs v-model="activeTab" :class="['frontend-tabs', 'frontend-tabs-active-' + activeTab]">
         <el-tab-pane label="图片处理" name="image">
-          <ImageProcessPanel ref="imageProcessPanelRef" />
+          <ImageProcessPanel ref="imageProcessPanelRef" :is-active="activeTab === 'image'" />
         </el-tab-pane>
         <el-tab-pane label="文本与 URL" name="text">
           <TextUrlProcessPanel ref="textUrlProcessPanelRef" />

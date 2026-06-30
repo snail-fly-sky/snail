@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import ColorToolPage from '../views/color/ColorToolPage.vue'
 import OffworkCountdownPage from '../views/countdown/OffworkCountdownPage.vue'
 import FrontendProcessToolPage from '../views/frontend/FrontendProcessToolPage.vue'
@@ -9,7 +9,7 @@ import ResumeWorkbench from '../views/resume/ResumeWorkbench.vue'
 import TimeToolPage from '../views/time/TimeToolPage.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
