@@ -849,6 +849,17 @@
   width: 126px;
 }
 
+.frontend-base64-controls .frontend-control-grid .el-slider__input .el-input__wrapper {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.frontend-base64-controls .frontend-control-grid .el-slider__input .el-input__inner {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
 .frontend-base64-controls .frontend-split-actions {
   display: grid;
   grid-template-columns: 1fr;
@@ -1688,10 +1699,42 @@
   color: #b7c3d7;
 }
 
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input-number__increase,
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input-number__decrease {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(116, 167, 255, 0.1), rgba(15, 23, 42, 0.72)),
+    rgba(15, 23, 42, 0.74);
+  color: #b7c3d7;
+}
+
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input-number__increase:hover,
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input-number__decrease:hover {
+  background:
+    linear-gradient(135deg, rgba(116, 167, 255, 0.2), rgba(30, 41, 59, 0.82)),
+    rgba(15, 23, 42, 0.84);
+  color: #dbeafe;
+}
+
 :root[data-theme="dark"] .frontend-tools-page .el-input__wrapper,
 :root[data-theme="dark"] .frontend-tools-page .el-textarea__inner,
 :root[data-theme="dark"] .frontend-tools-page .el-select__wrapper {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(15, 23, 42, 0.82)),
+    rgba(15, 23, 42, 0.78);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+}
+
+:root[data-theme="dark"] .frontend-tools-page .el-input__inner,
+:root[data-theme="dark"] .frontend-tools-page .el-textarea__inner {
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+}
+
+:root[data-theme="dark"] .frontend-tools-page .el-input__inner::placeholder,
+:root[data-theme="dark"] .frontend-tools-page .el-textarea__inner::placeholder {
+  color: #8fa0b7;
+  -webkit-text-fill-color: #8fa0b7;
 }
 
 :root[data-theme="dark"] .frontend-tools-page .el-input__wrapper:hover,
@@ -1721,7 +1764,19 @@
 :root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input__wrapper.is-focus:hover,
 :root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input.is-focus .el-input__wrapper,
 :root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input.is-focus .el-input__wrapper:hover {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(15, 23, 42, 0.82)),
+    rgba(15, 23, 42, 0.78) !important;
+  background-color: rgba(15, 23, 42, 0.78) !important;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16) inset !important;
+}
+
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input__inner,
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input__inner:focus,
+:root[data-theme="dark"] .frontend-tools-page .el-input-number .el-input__inner:focus-visible {
+  background: transparent !important;
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
 }
 
 :root[data-theme="dark"] .frontend-tools-page .el-color-picker__trigger {
@@ -1953,6 +2008,56 @@
   border-color: rgba(148, 163, 184, 0.18) !important;
   background: rgba(15, 23, 42, 0.38) !important;
   color: rgba(183, 195, 215, 0.52) !important;
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-tabs .el-tabs__header,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-preview-box,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-color-result-head,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-note-list,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-color-chip,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-kv-list,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-diff-row,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-path-list button,
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-markdown-preview {
+  border-color: rgba(120, 138, 168, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.12)),
+    rgba(255, 255, 255, 0.46);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-preview-box {
+  background:
+    linear-gradient(45deg, rgba(21, 25, 31, 0.035) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(21, 25, 31, 0.035) 25%, transparent 25%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(239, 246, 255, 0.18)),
+    rgba(255, 255, 255, 0.38);
+  background-size: 18px 18px, 18px 18px, auto, auto;
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-preview-box .frontend-preview-source {
+  border-color: rgba(120, 138, 168, 0.24);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.28)),
+    rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-overview-info {
+  border-color: rgba(120, 138, 168, 0.18);
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-note-list {
+  color: #526071;
+}
+
+:root:not([data-theme="dark"]) .frontend-tools-page .frontend-color-chip {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(247, 250, 255, 0.2)),
+    rgba(255, 255, 255, 0.44) !important;
 }
 
 @media (max-width: 1180px) {

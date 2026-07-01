@@ -339,8 +339,9 @@ onBeforeUnmount(() => {
   background:
     linear-gradient(45deg, rgba(21, 25, 31, 0.04) 25%, transparent 25%),
     linear-gradient(-45deg, rgba(21, 25, 31, 0.04) 25%, transparent 25%),
-    #ffffff;
-  background-size: 16px 16px;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(239, 246, 255, 0.18)),
+    rgba(255, 255, 255, 0.38);
+  background-size: 16px 16px, 16px 16px, auto, auto;
 }
 
 .frontend-preview-image {

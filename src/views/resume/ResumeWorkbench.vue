@@ -296,7 +296,7 @@
         </form>
 
         <section ref="previewPanel" class="preview-panel" aria-label="简历预览">
-          <div ref="resumePaper" class="resume-paper">
+          <div ref="resumePaper" class="resume-paper resume-preview-paper">
             <header class="paper-header">
               <div class="paper-title-block">
                 <span class="paper-kicker">Candidate Profile</span>
